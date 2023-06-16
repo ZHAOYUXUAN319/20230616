@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<style>
+.container {
+	margin: 20px;
+	background: orange;
+}
+
+.float-end {
+	float: right;
+}
+
+.btn {
+	padding: 6px 12px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table th, .table td {
+	padding: 8px;
+	border: 1px solid #ddd;
+}
+
+.align-middle {
+	vertical-align: middle !important;
+}
+
+#propertyId, #propertyName, #address, #propertyType, #period,
+	#propertyArea, #price, #syozokuCompanyId, #status {
+	width: 200px;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+input[type="submit"] {
+	padding: 6px 12px;
+	font-size: 14px;
+	cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>message一覧</h1>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>message</th>
+					<th>状態</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="message : ${messageList}" class="align-middle">
+					<td th:text="${message.id}"></td>
+					<td th:text="${message.messages}"></td>
+					<td th:text="${message.status}"></td>
+					<td>
+						<form action="/user/messageUpdate" method="post">
+							<input type="hidden" name="Id"
+								th:value="${message.id}" />
+							<input type="hidden" name="Messages"
+								th:value="${message.messages}" />
+							
+							<button type="submit">処理</button>
+						</form>
+					</td>
+				</tr>
+
+
+			</tbody>
+		</table>
+	</div>
+</html>

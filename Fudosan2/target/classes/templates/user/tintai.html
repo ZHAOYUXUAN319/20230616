@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8">
+<head
+	th:replace="common/head :: head_fragment(title = '賃貸情報一覧', scripts = ~{::script}, links = ~{::link})"></head>
+<body>
+	<div class="container">
+		<h1>賃貸情報一覧</h1>
+		<form action="/tintaiKensaku" method="post">
+			<input type="submit" value="検索"> <input type="text"
+				name="name">
+		</form>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID:</th>
+					<th>お客さん:</th>
+					<th>賃貸物件ID:</th>
+					<th>一回審査者:</th>
+					<th>二回審査者:</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tintai : ${tintaiList}" class="align-middle">
+					<td th:text="${tintai.id}"></td>
+					<td th:text="${tintai.okyaku}"></td>
+					<td th:text="${tintai.tintaiBukenId}"></td>
+					<td th:text="${tintai.shinsasyaA}"></td>
+					<td th:text="${tintai.shinsasyaB}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

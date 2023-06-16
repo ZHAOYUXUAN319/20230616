@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<!-- 
+	<p th:text="'Welcome: ' + ${userName}"></p>
+	<p th:text="${session.message}"></p>-->
+	<p>
+		Welcome: <span th:text="${userName}"></span>
+	</p>
+	
+	<!-- <a th:href="@{/user/vip}">VIP申請はこちら</a> -->
+	<form action="/user/vip" method="post">
+
+		<button type="submit">VIP申请</button>
+	</form>
+
+	<button id="showBukenButton" class="btn btn-primary">物件公開一覧</button>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#showBukenButton").click(function() {
+				$.ajax({
+					//請求URL
+					url : "/user/Buken",
+					method : "GET",
+					success : function(response) {
+						//htmlのbukenTableところに情報を送る
+						$("#bukenTable").html(response);
+					},
+					error : function() {
+						alert("失敗");
+					}
+				});
+			});
+		});
+	</script>
+
+	<button id="showMessageButton" class="btn btn-primary">Message一覧</button>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#showMessageButton").click(function() {
+				$.ajax({
+					//請求URL
+					url : "/user/message",
+					method : "GET",
+					success : function(response) {
+						//htmlのbukenTableところに情報を送る
+						$("#messageTable").html(response);
+					},
+					error : function() {
+						alert("失敗");
+					}
+				});
+			});
+		});
+	</script>
+	
+	<button id="showShinsaButton" class="btn btn-primary">審査一覧</button>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#showShinsaButton").click(function() {
+				$.ajax({
+					//請求URL
+					url : "/user/shinsa",
+					method : "GET",
+					success : function(response) {
+						//htmlのbukenTableところに情報を送る
+						$("#shinsaTable").html(response);
+					},
+					error : function() {
+						alert("失敗");
+					}
+				});
+			});
+		});
+	</script>
+	
+	<button id="showTintaiButton" class="btn btn-primary">賃貸一覧</button>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#showTintaiButton").click(function() {
+				$.ajax({
+					//請求URL
+					url : "/user/tintai",
+					method : "GET",
+					success : function(response) {
+						//htmlのbukenTableところに情報を送る
+						$("#tintaiTable").html(response);
+					},
+					error : function() {
+						alert("失敗");
+					}
+				});
+			});
+		});
+	</script>
+	
+		<button id="showUserButton" class="btn btn-primary">ユーザ一覧</button>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#showUserButton").click(function() {
+				$.ajax({
+					//請求URL
+					url : "/user/user",
+					method : "GET",
+					success : function(response) {
+						//htmlのbukenTableところに情報を送る
+						$("#userTable").html(response);
+					},
+					error : function() {
+						alert("失敗");
+					}
+				});
+			});
+		});
+	</script>
+
+	<button id="showBukenButtonHikoukei" class="btn btn-primary">物件非公開一覧</button>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$("#showBukenButtonHikoukei").click(function() {
+				$.ajax({
+					//請求URL
+					url : "/user/BukenHikoukei",
+					method : "GET",
+					success : function(response) {
+						//htmlのbukenTableところに情報を送る
+						$("#bukenTable").html(response);
+					},
+					error : function() {
+						alert("失敗");
+					}
+				});
+			});
+		});
+	</script>
+	<div id="bukenTable"></div>
+	<div id="messageTable"></div>
+	<div id="shinsaTable"></div>
+	<div id="tintaiTable"></div>
+	<div id="userTable"></div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<style>
+.container {
+	margin: 20px;
+	background: orange;
+}
+
+.float-end {
+	float: right;
+}
+
+.btn {
+	padding: 6px 12px;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table th, .table td {
+	padding: 8px;
+	border: 1px solid #ddd;
+}
+
+.align-middle {
+	vertical-align: middle !important;
+}
+
+#propertyId, #propertyName, #address, #propertyType, #period,
+	#propertyArea, #price, #syozokuCompanyId, #status {
+	width: 200px;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+input[type="submit"] {
+	padding: 6px 12px;
+	font-size: 14px;
+	cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>審査設定画面</h1>
+
+		<p>審査管理者を設定して下さい</p>
+		<form action="/user/shinsaSetei" method="POST">
+			<p>審査され物件ID: <span th:text="${propertyId}"></span></p>
+			<input type="hidden" name="propertyId" th:value="${propertyId}" />
+			<select name="dropdown1" id="dropdown1">
+				<optgroup label="一回審査">
+					<option value="adminA" selected>管理者A</option>
+					<option value="adminB">管理者B</option>
+					<option value="adminC">管理者C</option>
+			</select> <select name="dropdown2" id="dropdown2">
+				<optgroup label="二回審査">
+					<option value="adminA">管理者A</option>
+					<option value="adminB" selected>管理者B</option>
+					<option value="adminC">管理者C</option>
+			</select> <input type="submit" value="設定">
+		</form>
+	</div>
+</html>
